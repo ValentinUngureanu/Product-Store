@@ -15,7 +15,7 @@ export const getProducts =  async (req, res) => {
     if (!product.name || !product.price || !product.image) {
       return res
         .status(400)
-        .json({ succes: false, message: "Please fill all the fields" });
+        .json({ success: false, message: "Please fill all the fields" });
     }
     const newProduct = new Product(product);
     try {
