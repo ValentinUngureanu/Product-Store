@@ -16,9 +16,11 @@ const navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Container
-      maxW={"1140px"}
+      maxW={"1350px"}
       px={4}
       bg={useColorModeValue("gray.100", "gray.900")}
+                  borderRadius="lg"
+
     >
       <Flex
         h={16}
