@@ -1,4 +1,4 @@
-import { Container, VStack, Text, SimpleGrid   } from "@chakra-ui/react";
+import { Container, VStack, Text, SimpleGrid } from "@chakra-ui/react";
 import React, { use } from "react";
 import { Link } from "react-router-dom";
 import { useProductStore } from "../store/Product";
@@ -9,7 +9,7 @@ const HomePage = () => {
   useEffect(() => {
     fetchProducts();
   }, [fetchProducts]);
-  console.log("products",products);
+  console.log("products", products);
   return (
     <div>
       <Container maxW="container.xl" py={12}>
@@ -28,29 +28,26 @@ const HomePage = () => {
             spacing={8}
             w="full"
             p={4}
-            bgGradient={"linear(to-r, cyan.100, blue.900)"}
-            borderRadius="lg"
           >
             {products.map((product) => (
-<ProductCard key={product._id} product={product} />
+              <ProductCard key={product._id} product={product} />
             ))}
           </SimpleGrid>
           {products.length === 0 && (
             <Text
-            fontSize="xl"
-            textAlign={"center"}
-            fontWeight={"bold"}
-            color="gray.500"
-          >
-            No products found 😢{" "}
-            <Link to={"/create"}>
-              <Text as="span" color={"blue.500"} textDecoration={"underline"}>
-                Create one now!
-              </Text>
-            </Link>
-          </Text>
-          )
-          }
+              fontSize="xl"
+              textAlign={"center"}
+              fontWeight={"bold"}
+              color="red.500"
+            >
+              No products found 😢{" "}
+              <Link to={"/create"}>
+                <Text as="span" color={"blue.500"} textDecoration={"underline"}>
+                  Create one now!
+                </Text>
+              </Link>
+            </Text>
+          )}
         </VStack>
       </Container>
     </div>

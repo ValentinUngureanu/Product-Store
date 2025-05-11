@@ -13,16 +13,20 @@ import {
   ModalContent,
   ModalHeader,
   ModalCloseButton,
-  ModalBody,Input, Button, VStack,useDisclosure
+  ModalBody,
+  Input,
+  Button,
+  VStack,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { EditIcon, DeleteIcon } from "@chakra-ui/icons";
 import { useProductStore } from "../store/Product";
 import { useState } from "react";
 const ProductCard = ({ product }) => {
-  const [updatedProduct, setUpdatedProduct] = useState( product );
+  const [updatedProduct, setUpdatedProduct] = useState(product);
   const textColor = useColorModeValue("gray.600", "gray.200");
-  const bg = useColorModeValue("white", "gray.800");
-  const { deleteProduct,updateProduct } = useProductStore();
+  const bg = useColorModeValue("white", "gray.500");
+  const { deleteProduct, updateProduct } = useProductStore();
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const handleDeleteProduct = async (pid) => {
@@ -48,7 +52,7 @@ const ProductCard = ({ product }) => {
   };
   const handleUpdatedProduct = async (pid, updatedProduct) => {
     const { success, message } = await updateProduct(pid, updatedProduct);
-      onClose();
+    onClose();
     if (!success) {
       toast({
         title: "Error updating product.",
@@ -67,7 +71,7 @@ const ProductCard = ({ product }) => {
       });
     }
     onClose();
-  }
+  };
   return (
     <Box
       shadow="lg"
@@ -85,7 +89,7 @@ const ProductCard = ({ product }) => {
         objectFit="cover"
       />
       <Box p={4}>
-        <Heading as="h3" size="lg"  mb={2}>
+        <Heading as="h3" size="lg" mb={2}>
           {product.name}
         </Heading>
         <Text fontWeight="bold" fontSize="xl" color={textColor} mb={4}>
@@ -145,8 +149,11 @@ const ProductCard = ({ product }) => {
             </VStack>
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme="blue" mr={3}
-            onClick={()=> handleUpdatedProduct(product._id, updatedProduct)}>
+            <Button
+              colorScheme="blue"
+              mr={3}
+              onClick={() => handleUpdatedProduct(product._id, updatedProduct)}
+            >
               Update
             </Button>
             <Button onClick={onClose}>Cancel</Button>
