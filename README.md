@@ -22,7 +22,7 @@ Backend: Node.js + Express.js
 
 Database: MongoDB
 
-API Testing: Postman
+API Testing: Postman 
 
 📸 UI Preview
 ![image](https://github.com/user-attachments/assets/00d3fba4-5902-402e-b971-70a1060e0d07)
