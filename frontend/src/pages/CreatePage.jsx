@@ -17,6 +17,13 @@ const CreatePage = () => {
     name: "",
     price: "",
     image: "",
+    description: "",
+    stock: "",
+    category: "",
+    brand: "",
+    weight: "",
+    color: "",
+    releaseDate: "",
   });
   const toast = useToast();
   const { createProduct } = useProductStore();
@@ -38,7 +45,18 @@ const CreatePage = () => {
         duration: 5000,
         isClosable: true,
       });
-      setNewProduct({ name: "", price: "", image: "" });
+      setNewProduct({
+        name: "",
+        price: "",
+        image: "",
+        description: "",
+        stock: "",
+        category: "",
+        brand: "",
+        weight: "",
+        color: "",
+        releaseDate: "",
+      });
     }
   };
   return (
@@ -80,6 +98,66 @@ const CreatePage = () => {
                 setNewProduct({ ...newProduct, image: e.target.value })
               }
             />
+            <Input
+              placeholder="Description"
+              name="description"
+              value={newProduct.description}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, description: e.target.value })
+              }
+            />
+            <Input
+              placeholder="Stock"
+              name="stock"
+              type="number"
+              value={newProduct.stock}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, stock: e.target.value })
+              }
+            />
+            <Input
+              placeholder="Category"
+              name="category"
+              value={newProduct.category}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, category: e.target.value })
+              }
+            />
+            <Input
+              placeholder="Brand"
+              name="brand"
+              value={newProduct.brand}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, brand: e.target.value })
+              }
+            />
+            <Input
+              placeholder="Weight (kg)"
+              name="weight"
+              type="number"
+              value={newProduct.weight}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, weight: e.target.value })
+              }
+            />
+            <Input
+              placeholder="Color"
+              name="color"
+              value={newProduct.color}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, color: e.target.value })
+              }
+            />
+            <Input
+              placeholder="Release Date"
+              name="releaseDate"
+              type="date"
+              value={newProduct.releaseDate}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, releaseDate: e.target.value })
+              }
+            />
+
             <Button colorScheme="blue" onClick={handleAddProduct} w="full">
               Add Product
             </Button>

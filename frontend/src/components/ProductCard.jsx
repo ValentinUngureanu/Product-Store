@@ -89,21 +89,31 @@ const ProductCard = ({ product }) => {
         objectFit="cover"
       />
       <Box p={4}>
-        <Heading as="h3" size="lg" mb={2}>
-          {product.name}
-        </Heading>
-        <Text fontWeight="bold" fontSize="xl" color={textColor} mb={4}>
-          ${product.price}
-        </Text>
-        <HStack spacing={2}>
-          <IconButton icon={<EditIcon />} onClick={onOpen} colorScheme="blue" />
-          <IconButton
-            icon={<DeleteIcon />}
-            onClick={() => handleDeleteProduct(product._id)}
-            colorScheme="red"
-          />
-        </HStack>
-      </Box>
+  <Heading as="h3" size="lg" mb={2}>
+    {product.name}
+  </Heading>
+  <Text fontWeight="bold" fontSize="xl" color={textColor}>
+    ${product.price}
+  </Text>
+  <Text color={textColor}>Description: {product.description}</Text>
+  <Text color={textColor}>Stock: {product.stock}</Text>
+  <Text color={textColor}>Category: {product.category}</Text>
+  <Text color={textColor}>Brand: {product.brand}</Text>
+  <Text color={textColor}>Weight: {product.weight} kg</Text>
+  <Text color={textColor}>Color: {product.color}</Text>
+  <Text color={textColor}>
+    Release Date: {product.releaseDate?.slice(0, 10)}
+  </Text>
+
+  <HStack spacing={2} mt={4}>
+    <IconButton icon={<EditIcon />} onClick={onOpen} colorScheme="blue" />
+    <IconButton
+      icon={<DeleteIcon />}
+      onClick={() => handleDeleteProduct(product._id)}
+      colorScheme="red"
+    />
+  </HStack>
+</Box>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
 
@@ -112,41 +122,92 @@ const ProductCard = ({ product }) => {
           <ModalCloseButton />
           <ModalBody>
             <VStack spacing={4}>
-              <Input
-                placeholder={"Product Name"}
-                name="name"
-                value={updatedProduct.name}
-                onChange={(e) =>
-                  setUpdatedProduct({
-                    ...updatedProduct,
-                    name: e.target.value,
-                  })
-                }
-              />
-              <Input
-                placeholder={"Product Price"}
-                name="price"
-                type="number"
-                value={updatedProduct.price}
-                onChange={(e) =>
-                  setUpdatedProduct({
-                    ...updatedProduct,
-                    price: e.target.value,
-                  })
-                }
-              />
-              <Input
-                placeholder={"Product Image URL"}
-                name="image"
-                value={updatedProduct.image}
-                onChange={(e) =>
-                  setUpdatedProduct({
-                    ...updatedProduct,
-                    image: e.target.value,
-                  })
-                }
-              />
-            </VStack>
+  <Input
+    placeholder="Product Name"
+    name="name"
+    value={updatedProduct.name}
+    onChange={(e) =>
+      setUpdatedProduct({ ...updatedProduct, name: e.target.value })
+    }
+  />
+  <Input
+    placeholder="Product Price"
+    name="price"
+    type="number"
+    value={updatedProduct.price}
+    onChange={(e) =>
+      setUpdatedProduct({ ...updatedProduct, price: e.target.value })
+    }
+  />
+  <Input
+    placeholder="Product Image URL"
+    name="image"
+    value={updatedProduct.image}
+    onChange={(e) =>
+      setUpdatedProduct({ ...updatedProduct, image: e.target.value })
+    }
+  />
+  <Input
+    placeholder="Description"
+    name="description"
+    value={updatedProduct.description}
+    onChange={(e) =>
+      setUpdatedProduct({ ...updatedProduct, description: e.target.value })
+    }
+  />
+  <Input
+    placeholder="Stock"
+    name="stock"
+    type="number"
+    value={updatedProduct.stock}
+    onChange={(e) =>
+      setUpdatedProduct({ ...updatedProduct, stock: e.target.value })
+    }
+  />
+  <Input
+    placeholder="Category"
+    name="category"
+    value={updatedProduct.category}
+    onChange={(e) =>
+      setUpdatedProduct({ ...updatedProduct, category: e.target.value })
+    }
+  />
+  <Input
+    placeholder="Brand"
+    name="brand"
+    value={updatedProduct.brand}
+    onChange={(e) =>
+      setUpdatedProduct({ ...updatedProduct, brand: e.target.value })
+    }
+  />
+  <Input
+    placeholder="Weight (kg)"
+    name="weight"
+    type="number"
+    value={updatedProduct.weight}
+    onChange={(e) =>
+      setUpdatedProduct({ ...updatedProduct, weight: e.target.value })
+    }
+  />
+  <Input
+    placeholder="Color"
+    name="color"
+    value={updatedProduct.color}
+    onChange={(e) =>
+      setUpdatedProduct({ ...updatedProduct, color: e.target.value })
+    }
+  />
+  <Input
+    placeholder="Release Date"
+    name="releaseDate"
+    type="date"
+    value={updatedProduct.releaseDate?.slice(0, 10) || ""}
+    onChange={(e) =>
+      setUpdatedProduct({ ...updatedProduct, releaseDate: e.target.value })
+    }
+  />
+</VStack>
+
           </ModalBody>
           <ModalFooter>
             <Button

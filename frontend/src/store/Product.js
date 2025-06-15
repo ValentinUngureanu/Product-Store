@@ -4,7 +4,16 @@ export const useProductStore = create((set) => ({
   products: [],
   setProducts: (products) => set({ products }),
   createProduct: async (newProduct) => {
-    if (!newProduct.name || !newProduct.price || !newProduct.image) {
+    if (!newProduct.name ||
+  !newProduct.price ||
+  !newProduct.image ||
+  !newProduct.description ||
+  !newProduct.stock ||
+  !newProduct.category ||
+  !newProduct.brand ||
+  !newProduct.weight ||
+  !newProduct.color ||
+  !newProduct.releaseDate) {
       return { success: false, message: "Please fill all fields." };
     }
     const res = await fetch("/api/products", {
